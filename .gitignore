@@ -1,0 +1,14 @@
+*.class
+/java/Compiler/bin/
+/Jflex/
+/tests/arm/*.arm
+/tests/arm/*.s
+/tests/arm/*.o
+/tests/result_actual/
+/tests/result_expected/
+/tests/gencode/*.arm
+/tests/gencode/*.s
+/tests/gencode/*.o
+/tests/gencode/*.actual
+/tests/gencode/*.expected
+

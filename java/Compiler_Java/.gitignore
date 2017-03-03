@@ -1,0 +1,9 @@
+*.class
+/bin/
+/Jflex/
+../../tests/arm/*.arm
+../../tests/arm/*.s
+../../tests/arm/*.o
+../../tests/result_actual/
+../../tests/result_expected/
+

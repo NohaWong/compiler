@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#Gestion des arguments pour avoir les chemins absolue
+Output=0
+DIR=$(dirname $(readlink -f $0))
+BUILD=$DIR"/../java/Compiler_Java/build.xml"
+
+for arg in $*
+do
+	arg_elt=$arg
+		if [ "${arg_elt::1}" != '-' ] && ! [[ $arg_elt =~ ^[0-9]+$ ]]; then
+ 			arg_elt=$(readlink -f $arg)
+		fi
+		if [ $arg_elt = "-o" ]; then
+			Output=1
+		fi
+ 		args="$args $arg_elt"
+done
+
+
+if [ "${arg_elt::1}" != '-' ] && ! [[ $arg_elt =~ ^[0-9]+$ ]] && [ $Output -eq 0 ]; then
+	FileOutput=$PWD"/"$(basename ${arg_elt%.*}).s
+	args="-o $FileOutput $args" 
+	echo $FileOutput
+fi
+
+
+#echo $args
+
+#Commande de compilation
+ant -buildfile $BUILD run -Dargs="$args"
+exit $?
+
